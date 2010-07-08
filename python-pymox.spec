@@ -2,7 +2,7 @@
 Summary:	Mox is a mock object framework for Python
 Name:		python-%{module}
 Version:	0.5.0
-Release:	1
+Release:	2
 License:	Apache
 Group:		Libraries/Python
 Source0:	http://pymox.googlecode.com/files/mox-%{version}.tar.gz
