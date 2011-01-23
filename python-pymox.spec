@@ -9,6 +9,8 @@ Source0:	http://pymox.googlecode.com/files/mox-%{version}.tar.gz
 # Source0-md5:	4203ea4f03c7dcec0a1ceb1290a8b615
 URL:		http://pyme.sourceforge.net/
 %pyrequires_eq	python-modules
+BuildRequires:	python-modules
+BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
