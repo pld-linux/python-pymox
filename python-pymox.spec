@@ -1,16 +1,17 @@
 %define 	module	pymox
 Summary:	Mox is a mock object framework for Python
 Name:		python-%{module}
-Version:	0.5.0
-Release:	2
+Version:	0.5.3
+Release:	1
 License:	Apache
 Group:		Libraries/Python
 Source0:	http://pymox.googlecode.com/files/mox-%{version}.tar.gz
-# Source0-md5:	4203ea4f03c7dcec0a1ceb1290a8b615
+# Source0-md5:	2c43da56ed1bbbbf7805e81c76a924cc
 URL:		http://pyme.sourceforge.net/
 %pyrequires_eq	python-modules
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,17 +26,16 @@ language (DSL), which makes it easy to use, understand, and refactor!
 %setup -q -n mox-%{version}
 
 %build
-export CFLAGS="%{rpmcflags}"
 python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
+%{__python} setup.py install \
+	--skip-build \
+	--optimize=2 \
+	--root=$RPM_BUILD_ROOT
 
-python setup.py install \
-	--root=$RPM_BUILD_ROOT \
-	--optimize=2
-
-find $RPM_BUILD_ROOT%{py_sitedir} -name '*.py' | xargs rm -f
+%py_postclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
