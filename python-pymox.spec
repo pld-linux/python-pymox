@@ -1,16 +1,17 @@
+# TODO: rename to python-mox to conform to pld python package naming policy (python-MODULE_NAME)
 %define 	module	pymox
 Summary:	Mox is a mock object framework for Python
 Name:		python-%{module}
 Version:	0.5.3
-Release:	1
+Release:	2
 License:	Apache
 Group:		Libraries/Python
 Source0:	http://pymox.googlecode.com/files/mox-%{version}.tar.gz
 # Source0-md5:	2c43da56ed1bbbbf7805e81c76a924cc
-URL:		http://pyme.sourceforge.net/
-%pyrequires_eq	python-modules
+URL:		https://code.google.com/p/pymox/
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
+Requires:	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,7 +27,7 @@ language (DSL), which makes it easy to use, understand, and refactor!
 %setup -q -n mox-%{version}
 
 %build
-python setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
